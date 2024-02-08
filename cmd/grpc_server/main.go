@@ -3,14 +3,15 @@ package main
 import (
 	"context"
 	"fmt"
-	"google.golang.org/protobuf/types/known/timestamppb"
 	"log"
 	"net"
 
-	desc "github.com/TauzhnianskyiArtem/auth-service/pkg/user_v1"
 	"github.com/brianvoe/gofakeit"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
+	"google.golang.org/protobuf/types/known/timestamppb"
+
+	desc "github.com/TauzhnianskyiArtem/auth-service/pkg/user_v1"
 )
 
 const grpcPort = 9090
@@ -22,6 +23,7 @@ type server struct {
 // Get ...
 func (s *server) Get(ctx context.Context, req *desc.UserGetRequest) (*desc.UserGetResponse, error) {
 	log.Printf("User id: %d", req.GetId())
+	log.Printf("Usernames: %v", ctx.Value("test"))
 
 	return &desc.UserGetResponse{
 		Id:        gofakeit.Int64(),
