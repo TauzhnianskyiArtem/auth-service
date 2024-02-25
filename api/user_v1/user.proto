@@ -46,7 +46,6 @@ message UserUpdateRequest {
   google.protobuf.StringValue email = 3;
 }
 
-
 message UserGetRequest {
   int64 id = 1;
 }
